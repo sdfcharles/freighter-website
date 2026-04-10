@@ -26,12 +26,13 @@ export const NAV_LINKS: readonly {
   href: string;
   external?: boolean;
 }[] = [
-  { label: "Docs", href: "https://docs.freighter.app", external: true },
   {
-    label: "Github",
+    label: "GitHub",
     href: "https://github.com/stellar/freighter",
     external: true,
   },
   { label: "Changelog", href: "/changelog" },
-  { label: "Help", href: "https://docs.freighter.app/support", external: true },
+  { label: "Feedback", href: LINKS.feedback, external: true },
+  { label: "Terms", href: "/terms" },
+  { label: "Privacy", href: "/privacy" },
 ];

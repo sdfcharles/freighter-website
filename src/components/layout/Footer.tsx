@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { SITE, LINKS } from "@/lib/constants";
 
@@ -9,7 +12,27 @@ const footerLinks = [
   { label: "Privacy", href: "/privacy" },
 ];
 
+const discordLinks = [
+  { label: "Stellar Global", href: "https://discord.gg/stellarglobal" },
+  { label: "Stellar Developers", href: "https://discord.gg/stellardev" },
+];
+
 export function Footer() {
+  const [discordOpen, setDiscordOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setDiscordOpen(false);
+      }
+    }
+    if (discordOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [discordOpen]);
+
   return (
     <footer>
       <div className="max-w-[1024px] mx-auto px-6 h-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm font-medium text-text-secondary">
@@ -36,6 +59,31 @@ export function Footer() {
               </Link>
             )
           )}
+
+          {/* Discord with dropdown */}
+          <div ref={menuRef} className="relative">
+            <button
+              onClick={() => setDiscordOpen(!discordOpen)}
+              className="hover:text-text-primary transition-colors cursor-pointer"
+            >
+              Discord
+            </button>
+            {discordOpen && (
+              <div className="absolute bottom-full mb-2 right-0 bg-bg-elevated border border-border rounded-lg py-1 min-w-[180px] shadow-lg">
+                {discordLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-white/5 transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
         </nav>
       </div>
     </footer>

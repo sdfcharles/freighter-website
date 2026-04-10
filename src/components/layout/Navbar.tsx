@@ -32,35 +32,14 @@ export function Navbar() {
                 alt="Freighter"
                 width={245}
                 height={100}
+                priority
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-none pointer-events-none"
               />
             </div>
           </Link>
 
-          {/* Desktop nav links */}
-          <div className="hidden lg:flex items-center gap-6 text-sm font-medium text-text-secondary">
-            {NAV_LINKS.map((link) =>
-              link.external ? (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="nav-link hover:text-text-primary transition-colors"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="nav-link hover:text-text-primary transition-colors"
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
-          </div>
+          {/* Spacer to keep logo left and download right */}
+          <div className="hidden lg:block" />
 
           {/* Desktop Download button */}
           <div className="hidden lg:block">
@@ -115,21 +94,6 @@ export function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="fixed inset-0 z-40 bg-bg-primary pt-20 px-6 lg:hidden"
           >
-            <div className="flex flex-col gap-2">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-lg font-medium text-text-primary py-4 border-b border-border"
-                  {...(link.external
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
             <div className="mt-8">
               <a
                 href={LINKS.chromeExtension}

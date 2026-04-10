@@ -29,7 +29,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   ghost: "text-text-secondary hover:text-text-primary rounded-lg",
   pill: "bg-bg-hover text-text-primary hover:bg-zinc-700 rounded-full",
   "pill-dark":
-    "bg-[#171717] text-white hover:bg-[#222222] rounded-full",
+    "bg-bg-tertiary text-white hover:bg-bg-hover rounded-full",
 };
 
 export function Button({

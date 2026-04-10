@@ -147,7 +147,7 @@ export function FeatureCarousel() {
                   <div className="aspect-square rounded-[32px] bg-bg-elevated transition-transform duration-300 ease-out hover:scale-[1.02]" />
                   {/* Icon + label */}
                   <div className="flex items-center gap-3 mt-4">
-                    <div className="size-[35px] rounded-full bg-bg-elevated shrink-0 flex items-center justify-center text-[#B3A8FF]">
+                    <div className="size-[35px] rounded-full bg-bg-elevated shrink-0 flex items-center justify-center text-accent-light">
                       <Icon size={18} />
                     </div>
                     <span className="text-base sm:text-lg font-medium text-white tracking-[-0.96px]">

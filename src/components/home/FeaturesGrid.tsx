@@ -37,32 +37,32 @@ const features: { title: string; description: string; icon: ComponentType<{ size
   },
   {
     title: "Zero Fees.",
-    description: "No wallet fees — just Stellar's network cost.",
+    description: "No wallet fees \u2014 just Stellar\u2019s low network cost per transaction.",
     icon: CurrencyDollarBold,
   },
   {
     title: "Trusted Assets.",
-    description: "Control exactly which assets you hold.",
+    description: "Control exactly which assets you hold and manage trustlines.",
     icon: ShieldCheckBold,
   },
   {
     title: "Multiple Addresses.",
-    description: "Create or import wallets and switch freely.",
+    description: "Create or import wallets and switch freely between them.",
     icon: WalletBold,
   },
   {
     title: "Blockaid Protection.",
-    description: "Blocks scams and malicious transactions.",
+    description: "Blocks scams and malicious transactions automatically.",
     icon: ShieldBold,
   },
   {
     title: "Non-Custodial.",
-    description: "Your keys stay on your device, always.",
+    description: "Your keys stay on your device, always. You own your crypto.",
     icon: LockBold,
   },
   {
     title: "Import Any Wallet.",
-    description: "Restore accounts with a recovery phrase.",
+    description: "Restore accounts with a recovery phrase from any provider.",
     icon: DownloadBold,
   },
 ];
@@ -90,11 +90,11 @@ export function FeaturesGrid() {
                   i < 6 && "border-b border-border"
                 )}
               >
-                <div className="shrink-0 mt-0.5 text-[#B3A8FF]">
+                <div className="shrink-0 mt-0.5 text-accent-light">
                   <Icon size={20} />
                 </div>
-                <p className="text-base leading-6 min-h-[72px]">
-                  <span className="font-medium text-[#ededed]">
+                <p className="text-base leading-6 h-[72px] overflow-hidden">
+                  <span className="font-medium text-text-primary">
                     {feature.title}
                   </span>{" "}
                   <span className="text-text-secondary">

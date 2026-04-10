@@ -65,13 +65,23 @@ function BubbleBackground({
     const ro = new ResizeObserver(updateRect);
     if (el) ro.observe(el);
 
+    let scrollRaf: number | null = null;
+    const throttledScroll = () => {
+      if (scrollRaf) return;
+      scrollRaf = requestAnimationFrame(() => {
+        updateRect();
+        scrollRaf = null;
+      });
+    };
+
     window.addEventListener('resize', updateRect);
-    window.addEventListener('scroll', updateRect, { passive: true });
+    window.addEventListener('scroll', throttledScroll, { passive: true });
 
     return () => {
       ro.disconnect();
       window.removeEventListener('resize', updateRect);
-      window.removeEventListener('scroll', updateRect);
+      window.removeEventListener('scroll', throttledScroll);
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
     };
   }, []);
 

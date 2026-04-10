@@ -1,11 +1,16 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeSlideUp } from "@/lib/animations";
 import { LINKS } from "@/lib/constants";
-import { BubbleBackground } from "@/components/animate-ui/components/backgrounds/bubble";
 import { DownloadBold } from "@/components/ui/PhosphorIcons";
+
+const Iridescence = dynamic(
+  () => import("@/components/ui/Iridescence/Iridescence"),
+  { ssr: false }
+);
 
 export function CTASection() {
   return (
@@ -19,18 +24,17 @@ export function CTASection() {
           className="flex flex-col gap-8"
         >
           {/* CTA card */}
-            <BubbleBackground
-              interactive
-              className="bg-gradient-to-br from-[#1a1428] to-[#2a1f50] rounded-[16px]"
-              colors={{
-                first: "110,86,207",
-                second: "88,66,195",
-                third: "130,106,220",
-                fourth: "70,50,170",
-                fifth: "150,130,235",
-                sixth: "100,76,200",
-              }}
-            >
+          <div className="relative rounded-[16px] overflow-hidden">
+            {/* LiquidChrome background */}
+            <div className="absolute inset-0 z-0">
+              <Iridescence
+                color={[0.4, 0.2, 0.9]}
+                speed={0.8}
+                amplitude={0.1}
+                mouseReact
+              />
+            </div>
+
             <div className="relative z-10 flex flex-col items-center justify-center p-8 gap-8 h-[480px]">
               {/* Logo */}
               <Image
@@ -75,7 +79,7 @@ export function CTASection() {
                 </a>
               </div>
             </div>
-            </BubbleBackground>
+          </div>
         </motion.div>
       </div>
     </section>
