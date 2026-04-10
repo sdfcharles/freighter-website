@@ -37,21 +37,40 @@ export function CTASection() {
 
             <div className="relative z-10 flex flex-col items-center justify-center p-8 gap-8 h-[360px] sm:h-[420px] lg:h-[480px]">
               {/* Logo */}
-              <Image
-                src="/images/logo.svg"
-                alt="Freighter"
-                width={64}
-                height={64}
-                className="size-16"
-              />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+              >
+                <Image
+                  src="/images/logo.svg"
+                  alt="Freighter"
+                  width={64}
+                  height={64}
+                  className="size-16"
+                />
+              </motion.div>
 
               {/* Heading */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium text-white tracking-[-1.92px] text-center leading-[1.17]">
+              <motion.h2
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1, duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+                className="text-3xl sm:text-4xl lg:text-[48px] font-medium text-white tracking-[-1.92px] text-center leading-[1.17]"
+              >
                 Try Freighter today
-              </h2>
+              </motion.h2>
 
               {/* Download buttons */}
-              <div className="flex gap-3">
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+                className="flex gap-3"
+              >
                 <a
                   href={LINKS.iosApp}
                   className="inline-flex items-center justify-center gap-1 px-6 py-3 text-sm font-medium text-white bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors whitespace-nowrap"
@@ -75,7 +94,7 @@ export function CTASection() {
                   <DownloadBold size={16} className="shrink-0 opacity-50" />
                   Browser
                 </a>
-              </div>
+              </motion.div>
             </div>
           </div>
         </motion.div>

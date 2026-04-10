@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { SITE, LINKS } from "@/lib/constants";
 
@@ -68,21 +69,29 @@ export function Footer() {
             >
               Discord
             </button>
-            {discordOpen && (
-              <div className="absolute bottom-full mb-2 right-0 bg-bg-elevated border border-border rounded-lg py-1 min-w-[180px] shadow-lg">
-                {discordLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-white/5 transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            )}
+            <AnimatePresence>
+              {discordOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 4 }}
+                  transition={{ duration: 0.15, ease: [0.25, 1, 0.5, 1] }}
+                  className="absolute bottom-full mb-2 right-0 bg-bg-elevated border border-border rounded-lg py-1 min-w-[180px] shadow-lg"
+                >
+                  {discordLinks.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-white/5 transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </nav>
       </div>

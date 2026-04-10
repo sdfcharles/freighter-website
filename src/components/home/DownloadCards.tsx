@@ -61,7 +61,7 @@ export function DownloadCards() {
             {/* Phone mockup placeholder */}
             <div className="absolute bottom-0 right-4 sm:right-8 w-[180px] sm:w-[220px] md:w-[330px] h-[400px] sm:h-[500px] md:h-[717px] rounded-[2px] bg-zinc-300/10 shadow-[0px_24px_24px_4px_rgba(0,0,0,0.25)] z-[1]" />
             {/* QR code linking to freighter.app */}
-            <div className="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 z-10 size-[100px] sm:size-[120px] rounded-[16px] bg-white p-2 sm:p-2.5 shadow-lg">
+            <div className="qr-glow absolute bottom-4 left-4 sm:bottom-8 sm:left-8 z-10 size-[100px] sm:size-[120px] rounded-[16px] bg-white p-2 sm:p-2.5 shadow-lg">
               <RoundedQR value="https://www.freighter.app" size={80} />
             </div>
           </div>

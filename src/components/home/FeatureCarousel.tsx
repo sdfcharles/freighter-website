@@ -144,7 +144,7 @@ export function FeatureCarousel() {
                   style={{ width: cardWidth }}
                 >
                   {/* Placeholder image */}
-                  <div className="aspect-square rounded-[32px] bg-bg-elevated transition-transform duration-300 ease-out hover:scale-[1.02]" />
+                  <div className="aspect-square rounded-[32px] bg-bg-elevated transition-all duration-300 ease-out hover:scale-[1.04] hover:shadow-[0_8px_30px_rgba(101,76,216,0.15)]" />
                   {/* Icon + label */}
                   <div className="flex items-center gap-3 mt-4">
                     <div className="size-[35px] rounded-full bg-bg-elevated shrink-0 flex items-center justify-center text-accent-light">

@@ -23,7 +23,7 @@ export function HeroSection() {
               variants={fadeSlideUp}
               initial="hidden"
               animate="visible"
-              className="text-3xl sm:text-4xl lg:text-[48px] font-medium text-white tracking-[-1.92px] leading-[1.17]"
+              className="shimmer-text text-3xl sm:text-4xl lg:text-[48px] font-medium text-white tracking-[-1.92px] leading-[1.17]"
             >
               Browse, connect, and use Stellar apps —all in one place
             </motion.h1>
@@ -66,7 +66,12 @@ export function HeroSection() {
             {/* Two overlapping phone mockups */}
             <div className="absolute inset-0 z-10 flex items-start justify-center pt-[48px] sm:pt-[60px] lg:pt-[72px]">
               <div className="inline-grid">
-                <div className="col-start-1 row-start-1 mt-12 w-[220px] sm:w-[280px] lg:w-[330px] h-[480px] sm:h-[600px] lg:h-[717px] rounded-[12px] sm:rounded-[16px] bg-zinc-800 shadow-[0px_24px_24px_4px_rgba(0,0,0,0.25)] overflow-hidden">
+                <motion.div
+                  initial={{ opacity: 0, y: 40, x: -20 }}
+                  animate={{ opacity: 1, y: 0, x: 0 }}
+                  transition={{ delay: 0.5, duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+                  className="col-start-1 row-start-1 mt-12 w-[220px] sm:w-[280px] lg:w-[330px] h-[480px] sm:h-[600px] lg:h-[717px] rounded-[24px] bg-zinc-800 shadow-[0px_24px_24px_4px_rgba(0,0,0,0.25)] overflow-hidden mockup-hover"
+                >
                   <Image
                     src="/images/discover-phone.png"
                     alt="Freighter wallet"
@@ -76,18 +81,23 @@ export function HeroSection() {
                     sizes="(max-width: 640px) 220px, (max-width: 1024px) 280px, 330px"
                     className="w-full h-full object-cover"
                   />
-                </div>
-                <div className="col-start-1 row-start-1 ml-[120px] sm:ml-[230px] lg:ml-[282px] w-[220px] sm:w-[280px] lg:w-[330px] h-[480px] sm:h-[600px] lg:h-[717px] rounded-[12px] sm:rounded-[16px] bg-zinc-800 shadow-[0px_24px_24px_4px_rgba(0,0,0,0.25)] overflow-hidden">
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 40, x: 20 }}
+                  animate={{ opacity: 1, y: 0, x: 0 }}
+                  transition={{ delay: 0.65, duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+                  className="col-start-1 row-start-1 ml-[120px] sm:ml-[230px] lg:ml-[282px] w-[220px] sm:w-[280px] lg:w-[330px] h-[480px] sm:h-[600px] lg:h-[717px] rounded-[24px] bg-zinc-800 shadow-[0px_24px_24px_4px_rgba(0,0,0,0.25)] overflow-hidden mockup-hover"
+                >
                   <Image
-                    src="/images/discover-phone.png"
-                    alt="Freighter wallet"
+                    src="/images/discover.png"
+                    alt="Freighter discover"
                     width={330}
                     height={717}
                     priority
                     sizes="(max-width: 640px) 220px, (max-width: 1024px) 280px, 330px"
                     className="w-full h-full object-cover"
                   />
-                </div>
+                </motion.div>
               </div>
             </div>
           </motion.div>

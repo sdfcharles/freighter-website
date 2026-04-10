@@ -26,7 +26,7 @@ export function Navbar() {
         <div className="max-w-[1024px] mx-auto px-6 h-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="shrink-0">
-            <div className="relative size-10 rounded-[9px] overflow-hidden bg-[#5842c3]">
+            <div className="logo-glow relative size-10 rounded-[9px] overflow-hidden bg-[#5842c3]">
               <Image
                 src="/images/freighter-icon.png"
                 alt="Freighter"

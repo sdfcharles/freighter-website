@@ -62,6 +62,48 @@ body {
   background-clip: text;
 }
 
+/* Hero text shimmer sweep */
+.shimmer-text {
+  background: linear-gradient(
+    110deg,
+    var(--color-text-primary) 0%,
+    var(--color-text-primary) 40%,
+    var(--color-accent-light) 50%,
+    var(--color-text-primary) 60%,
+    var(--color-text-primary) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+/* Logo hover glow */
+.logo-glow {
+  transition: box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.logo-glow:hover {
+  box-shadow: 0 0 16px 2px rgba(101, 76, 216, 0.4);
+  transform: scale(1.05);
+}
+
+/* Phone mockup hover lift */
+.mockup-hover {
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.mockup-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 32px 40px 8px rgba(0, 0, 0, 0.35);
+}
+
 .glow-border {
   position: relative;
 }
@@ -124,6 +166,21 @@ button[class*="rounded-full"]:active {
 .feature-cell:hover {
   background-color: rgba(179, 168, 255, 0.03);
 }
+.feature-cell:hover .feature-icon {
+  transform: scale(1.15);
+}
+.feature-icon {
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* QR code glow pulse */
+.qr-glow {
+  animation: qr-pulse 3s ease-in-out infinite;
+}
+@keyframes qr-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+  50% { box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.1); }
+}
 
 /* Nav link underline animation */
 .nav-link {
@@ -148,12 +205,23 @@ button[class*="rounded-full"]:active {
   a[class*="rounded-full"],
   button[class*="rounded-full"],
   .card-hover,
-  .feature-cell {
+  .feature-cell,
+  .logo-glow,
+  .mockup-hover,
+  .feature-icon {
     transition: none !important;
     transform: none !important;
   }
   .nav-link::after {
     transition: none !important;
+  }
+  .shimmer-text {
+    animation: none !important;
+    -webkit-text-fill-color: unset;
+    background: none;
+  }
+  .qr-glow {
+    animation: none !important;
   }
 }
 
