@@ -1,26 +1,174 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@plugin "@tailwindcss/typography";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-bg-primary: #09090b;   /* zinc-950 */
+  --color-bg-elevated: #18181b;  /* zinc-900 */
+  --color-bg-hover: #27272a;     /* zinc-800 */
+  --color-bg-tertiary: #141414;
+
+  --color-border: #1f1f23;       /* darker than zinc-800 */
+  --color-border-hover: #3f3f46; /* zinc-700 */
+
+  --color-text-primary: #fafafa;  /* zinc-50 */
+  --color-text-secondary: #a1a1aa; /* zinc-400 */
+  --color-text-tertiary: #71717a;  /* zinc-500 */
+
+  --color-accent: #654cd8;
+  --color-accent-secondary: #8b5cf6;
+
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-fade-slide-up: fade-slide-up 0.6s ease-out forwards;
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes fade-slide-up {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
   }
 }
 
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(101, 76, 216, 0.3);
+  color: #fafafa;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #654cd8, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(101, 76, 216, 0.3),
+    rgba(139, 92, 246, 0.1)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Pill button micro-interactions */
+a[class*="rounded-full"],
+button[class*="rounded-full"] {
+  transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1),
+              background-color 0.2s,
+              box-shadow 0.2s,
+              opacity 0.2s;
+}
+a[class*="rounded-full"]:hover {
+  transform: translateY(-1px);
+}
+a[class*="rounded-full"]:active,
+button[class*="rounded-full"]:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
+}
+
+/* Feature grid cell hover glow */
+.feature-cell {
+  transition: background-color 0.3s;
+}
+.feature-cell:hover {
+  background-color: rgba(179, 168, 255, 0.03);
+}
+
+/* Nav link underline animation */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #B3A8FF;
+  transition: width 0.2s ease-out;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  a[class*="rounded-full"],
+  button[class*="rounded-full"],
+  .card-hover,
+  .feature-cell {
+    transition: none !important;
+    transform: none !important;
+  }
+  .nav-link::after {
+    transition: none !important;
+  }
+}
+
+/* Rounded QR code dots */
+.qr-rounded svg path {
+  rx: 1;
+  ry: 1;
+}
+
+/* Prose overrides for legal pages */
+.prose-invert {
+  --tw-prose-body: #a1a1aa;     /* zinc-400 */
+  --tw-prose-headings: #fafafa;  /* zinc-50 */
+  --tw-prose-links: #654cd8;
+  --tw-prose-bold: #fafafa;      /* zinc-50 */
+  --tw-prose-counters: #71717a;  /* zinc-500 */
+  --tw-prose-bullets: #71717a;   /* zinc-500 */
+  --tw-prose-hr: #27272a;        /* zinc-800 */
 }
