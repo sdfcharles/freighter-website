@@ -35,7 +35,7 @@ export function CTASection() {
               />
             </div>
 
-            <div className="relative z-10 flex flex-col items-center justify-center p-8 gap-8 h-[480px]">
+            <div className="relative z-10 flex flex-col items-center justify-center p-8 gap-8 h-[360px] sm:h-[420px] lg:h-[480px]">
               {/* Logo */}
               <Image
                 src="/images/logo.svg"
@@ -51,30 +51,28 @@ export function CTASection() {
               </h2>
 
               {/* Download buttons */}
-              <div className="flex flex-col gap-3 w-[280px]">
-                <div className="grid grid-cols-2 gap-3">
-                  <a
-                    href={LINKS.iosApp}
-                    className="flex-1 inline-flex items-center justify-center gap-1 px-6 py-3 text-sm font-medium text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-full hover:bg-white/20 transition-colors whitespace-nowrap"
-                  >
-                    <DownloadBold size={16} className="shrink-0 opacity-50" />
-                    iOS
-                  </a>
-                  <a
-                    href={LINKS.androidApp}
-                    className="flex-1 inline-flex items-center justify-center gap-1 px-6 py-3 text-sm font-medium text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-full hover:bg-white/20 transition-colors whitespace-nowrap"
-                  >
-                    <DownloadBold size={16} className="shrink-0 opacity-50" />
-                    Android
-                  </a>
-                </div>
+              <div className="flex gap-3">
+                <a
+                  href={LINKS.iosApp}
+                  className="inline-flex items-center justify-center gap-1 px-6 py-3 text-sm font-medium text-white bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors whitespace-nowrap"
+                >
+                  <DownloadBold size={16} className="shrink-0 opacity-50" />
+                  iOS
+                </a>
+                <a
+                  href={LINKS.androidApp}
+                  className="inline-flex items-center justify-center gap-1 px-6 py-3 text-sm font-medium text-white bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors whitespace-nowrap"
+                >
+                  <DownloadBold size={16} className="shrink-0 opacity-50" />
+                  Android
+                </a>
                 <a
                   href={LINKS.chromeExtension}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1 w-full px-6 py-3 text-sm font-medium text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-full hover:bg-white/20 transition-colors"
+                  className="inline-flex items-center justify-center gap-1 px-6 py-3 text-sm font-medium text-white bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors whitespace-nowrap"
                 >
-                  <DownloadBold size={16} className="opacity-50" />
+                  <DownloadBold size={16} className="shrink-0 opacity-50" />
                   Browser
                 </a>
               </div>

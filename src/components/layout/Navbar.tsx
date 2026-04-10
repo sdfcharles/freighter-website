@@ -47,7 +47,7 @@ export function Navbar() {
               href={LINKS.chromeExtension}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-4 py-2 text-base font-medium text-text-primary bg-bg-hover rounded-full hover:bg-zinc-700 transition-all duration-200"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-all duration-200"
             >
               Download
             </a>

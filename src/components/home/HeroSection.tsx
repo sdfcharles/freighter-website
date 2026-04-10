@@ -37,7 +37,7 @@ export function HeroSection() {
                 href={LINKS.chromeExtension}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-white bg-bg-tertiary rounded-full hover:bg-bg-hover transition-all duration-200"
+                className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-white bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-all duration-200"
               >
                 <DownloadBold size={16} className="shrink-0 opacity-50" />
                 Download Freighter
@@ -77,7 +77,7 @@ export function HeroSection() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="col-start-1 row-start-1 ml-[180px] sm:ml-[230px] lg:ml-[282px] w-[220px] sm:w-[280px] lg:w-[330px] h-[480px] sm:h-[600px] lg:h-[717px] rounded-[12px] sm:rounded-[16px] bg-zinc-800 shadow-[0px_24px_24px_4px_rgba(0,0,0,0.25)] overflow-hidden">
+                <div className="col-start-1 row-start-1 ml-[120px] sm:ml-[230px] lg:ml-[282px] w-[220px] sm:w-[280px] lg:w-[330px] h-[480px] sm:h-[600px] lg:h-[717px] rounded-[12px] sm:rounded-[16px] bg-zinc-800 shadow-[0px_24px_24px_4px_rgba(0,0,0,0.25)] overflow-hidden">
                   <Image
                     src="/images/discover-phone.png"
                     alt="Freighter wallet"

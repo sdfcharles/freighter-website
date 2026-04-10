@@ -107,14 +107,14 @@ export function FeatureCarousel() {
           <div className="flex gap-2 shrink-0 ml-4">
             <button
               onClick={handlePrev}
-              className="size-10 rounded-full bg-bg-elevated flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-bg-hover transition-colors cursor-pointer"
+              className="size-11 rounded-full bg-bg-elevated flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-bg-hover transition-colors cursor-pointer"
               aria-label="Previous"
             >
               <CaretLeftBold size={16} />
             </button>
             <button
               onClick={handleNext}
-              className="size-10 rounded-full bg-bg-elevated flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-bg-hover transition-colors cursor-pointer"
+              className="size-11 rounded-full bg-bg-elevated flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-bg-hover transition-colors cursor-pointer"
               aria-label="Next"
             >
               <CaretRightBold size={16} />

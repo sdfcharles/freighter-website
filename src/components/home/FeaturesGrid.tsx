@@ -93,7 +93,7 @@ export function FeaturesGrid() {
                 <div className="shrink-0 mt-0.5 text-accent-light">
                   <Icon size={20} />
                 </div>
-                <p className="text-base leading-6 h-[72px] overflow-hidden">
+                <p className="text-base leading-6 min-h-[72px]">
                   <span className="font-medium text-text-primary">
                     {feature.title}
                   </span>{" "}

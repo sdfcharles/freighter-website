@@ -10,9 +10,9 @@ import { CTASection } from "@/components/home/CTASection";
 export default function Home() {
   return (
     <div className="overflow-x-clip flex flex-col pt-8 pb-[72px]">
-      <div className="flex flex-col gap-[120px]">
+      <div className="flex flex-col gap-16 sm:gap-[120px]">
         <Navbar />
-        <main className="flex flex-col gap-[120px]">
+        <main className="flex flex-col gap-16 sm:gap-[120px]">
           <HeroSection />
           <FeatureCarousel />
           <DownloadCards />
