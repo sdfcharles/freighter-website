@@ -60,7 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
-      <body className="min-h-screen text-text-primary font-sans" style={{ background: "linear-gradient(198deg, #09090b 0%, #0c0c12 100%)" }}>
+      <body className="min-h-screen text-text-primary font-sans" style={{ background: "linear-gradient(198deg, #141419 0%, #09090b 100%)" }}>
         <script
           dangerouslySetInnerHTML={{
             __html: `console.log("%c⚡ Freighter","font-size:24px;font-weight:bold;color:#654cd8");console.log("%cYour everyday Stellar wallet — https://github.com/stellar/freighter","font-size:12px;color:#a1a1aa");`,

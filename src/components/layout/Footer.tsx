@@ -36,9 +36,9 @@ export function Footer() {
 
   return (
     <footer>
-      <div className="max-w-[1024px] mx-auto px-6 h-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm font-medium text-text-secondary">
+      <div className="max-w-[1024px] mx-auto px-6 sm:h-8 flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-4 text-sm font-normal text-text-secondary">
         <p>&copy; 2026 Stellar Development Foundation</p>
-        <nav className="flex items-center gap-6">
+        <nav className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
           {footerLinks.map((link) =>
             link.external ? (
               <a

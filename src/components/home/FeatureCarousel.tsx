@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, type PanInfo } from "framer-motion";
 import { fadeSlideUp } from "@/lib/animations";
 import {
   PaperPlaneTiltBold,
@@ -14,6 +14,7 @@ import {
   CaretLeftBold,
   CaretRightBold,
 } from "@/components/ui/PhosphorIcons";
+import { FEATURE_ANIMATIONS } from "./FeatureAnimations";
 
 const ITEMS = [
   { label: "Send", icon: PaperPlaneTiltBold },
@@ -88,6 +89,16 @@ export function FeatureCarousel() {
     goNext();
   };
 
+  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    const threshold = cardWidth / 4;
+    if (info.offset.x < -threshold) {
+      setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
+    } else if (info.offset.x > threshold) {
+      setCurrentIndex((prev) => Math.max(prev - 1, 0));
+    }
+  };
+
   const translateX = -(currentIndex * (cardWidth + GAP));
 
   return (
@@ -132,19 +143,25 @@ export function FeatureCarousel() {
           <motion.div
             animate={{ x: translateX }}
             transition={{ type: "tween", duration: 0.4, ease: "easeInOut" }}
-            className="flex"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.15}
+            onDragEnd={handleDragEnd}
+            className="flex cursor-grab active:cursor-grabbing"
             style={{ gap: GAP }}
           >
             {ITEMS.map((item) => {
               const Icon = item.icon;
+              const Animation = FEATURE_ANIMATIONS[item.label];
               return (
                 <div
                   key={item.label}
                   className="shrink-0"
                   style={{ width: cardWidth }}
                 >
-                  {/* Placeholder image */}
-                  <div className="aspect-square rounded-[32px] bg-bg-elevated transition-all duration-300 ease-out hover:scale-[1.04] hover:shadow-[0_8px_30px_rgba(101,76,216,0.15)]" />
+                  <div className="aspect-square rounded-[32px] overflow-hidden transition-all duration-300 ease-out hover:scale-[1.04] hover:shadow-[0_8px_30px_rgba(101,76,216,0.15)]">
+                    {Animation ? <Animation /> : <div className="w-full h-full bg-bg-elevated" />}
+                  </div>
                   {/* Icon + label */}
                   <div className="flex items-center gap-3 mt-4">
                     <div className="size-[35px] rounded-full bg-bg-elevated shrink-0 flex items-center justify-center text-accent-light">

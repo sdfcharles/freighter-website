@@ -8,14 +8,14 @@ import { LINKS } from "@/lib/constants";
 import Image from "next/image";
 import { AppleLogoBold, AndroidLogoBold } from "@/components/ui/PhosphorIcons";
 
-const Iridescence = dynamic(
-  () => import("@/components/ui/Iridescence/Iridescence"),
+const ColorBends = dynamic(
+  () => import("@/components/ui/ColorBends"),
   { ssr: false }
 );
 
 export function DownloadCards() {
   return (
-    <section>
+    <section id="download">
       <div className="max-w-[1024px] mx-auto px-6">
         <motion.div
           variants={fadeSlideUp}
@@ -26,80 +26,76 @@ export function DownloadCards() {
         >
           {/* For mobile */}
           <div className="card-hover relative h-[400px] md:h-[480px] rounded-[32px] bg-bg-elevated overflow-hidden p-8 flex flex-col">
-            {/* Dither background */}
             <div className="absolute inset-0 z-0">
-              <Iridescence
-                color={[0.4, 0.2, 0.9]}
-                speed={0.8}
-                amplitude={0.1}
-                mouseReact
+              <ColorBends
+                colors={["#5842c3", "#3b1f8e", "#1a0a4a"]}
+                speed={0.2}
+                noise={0.06}
+                transparent={false}
               />
             </div>
 
-            <div className="flex items-center justify-between relative z-10">
-              <h3 className="text-xl sm:text-2xl font-medium text-white tracking-[-0.96px]">
-                For mobile
-              </h3>
-              <div className="flex gap-2">
-                <a
-                  href={LINKS.iosApp}
-                  className="inline-flex items-center gap-1 px-2.5 py-1.5 text-sm font-medium text-white bg-bg-tertiary rounded-full hover:bg-bg-hover transition-colors"
-                >
-                  <AppleLogoBold size={14} className="opacity-70" />
-                  Get iOS
-                </a>
-                <a
-                  href={LINKS.androidApp}
-                  className="inline-flex items-center gap-1 px-2.5 py-1.5 text-sm font-medium text-white bg-bg-tertiary rounded-full hover:bg-bg-hover transition-colors"
-                >
-                  <AndroidLogoBold size={14} className="opacity-70" />
-                  Get Android
-                </a>
-              </div>
+            <h3 className="text-xl sm:text-2xl font-medium text-white tracking-[-0.96px] relative z-10">
+              For mobile
+            </h3>
+            <div className="flex gap-2 mt-auto self-end relative z-10">
+              <a
+                href={LINKS.iosApp}
+                className="inline-flex items-center gap-1 px-6 py-3 text-sm font-medium text-white bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors"
+              >
+                <AppleLogoBold size={14} className="opacity-70" />
+                Get iOS
+              </a>
+              <a
+                href={LINKS.androidApp}
+                className="inline-flex items-center gap-1 px-6 py-3 text-sm font-medium text-white bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors"
+              >
+                <AndroidLogoBold size={14} className="opacity-70" />
+                Get Android
+              </a>
             </div>
 
-            {/* Phone mockup placeholder */}
-            <div className="absolute bottom-0 right-4 sm:right-8 w-[180px] sm:w-[220px] md:w-[330px] h-[400px] sm:h-[500px] md:h-[717px] rounded-[2px] bg-zinc-300/10 shadow-[0px_24px_24px_4px_rgba(0,0,0,0.25)] z-[1]" />
+            {/* Phone screenshot */}
+            <div className="absolute bottom-0 right-4 sm:right-8 w-[180px] sm:w-[220px] md:w-[260px] top-[72px] rounded-[2px] shadow-[0px_24px_24px_4px_rgba(0,0,0,0.25)] z-[1] overflow-hidden">
+              <Image src="/images/for-mobile.png" alt="Freighter mobile app" fill className="object-cover object-top" />
+            </div>
             {/* QR code linking to freighter.app */}
-            <div className="qr-glow absolute bottom-4 left-4 sm:bottom-8 sm:left-8 z-10 size-[100px] sm:size-[120px] rounded-[16px] bg-white p-2 sm:p-2.5 shadow-lg">
+            <div className="qr-glow absolute bottom-4 left-4 sm:bottom-8 sm:left-8 z-10 size-[96px] rounded-[4px] bg-white p-2 shadow-lg">
               <RoundedQR value="https://www.freighter.app" size={80} />
             </div>
           </div>
 
           {/* For extension */}
           <div className="card-hover relative h-[400px] md:h-[480px] rounded-[32px] bg-bg-elevated overflow-hidden p-8 flex flex-col">
-            {/* Dither background */}
             <div className="absolute inset-0 z-0">
-              <Iridescence
-                color={[0.4, 0.2, 0.9]}
-                speed={0.8}
-                amplitude={0.1}
-                mouseReact
+              <ColorBends
+                colors={["#5842c3", "#3b1f8e", "#1a0a4a"]}
+                speed={0.2}
+                noise={0.06}
+                transparent={false}
               />
             </div>
 
-            <div className="flex items-center justify-between relative z-10">
-              <h3 className="text-xl sm:text-2xl font-medium text-white tracking-[-0.96px]">
-                For browser
-              </h3>
-              <a
-                href={LINKS.chromeExtension}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-sm font-medium text-white bg-bg-tertiary rounded-full hover:bg-bg-hover transition-colors"
-              >
-                <span className="flex items-center -space-x-1.5">
-                  <Image src="/images/browser-chrome.png" alt="Chrome" width={18} height={18} className="size-[18px] rounded-full ring-1 ring-bg-tertiary" />
-                  <Image src="/images/browser-firefox.png" alt="Firefox" width={18} height={18} className="size-[18px] rounded-full ring-1 ring-bg-tertiary" />
-                  <Image src="/images/browser-brave.png" alt="Brave" width={18} height={18} className="size-[18px] rounded-full ring-1 ring-bg-tertiary" />
-                </span>
-                Get extension
-              </a>
-            </div>
+            <h3 className="text-xl sm:text-2xl font-medium text-white tracking-[-0.96px] relative z-10">
+              For browser
+            </h3>
+            <a
+              href={LINKS.chromeExtension}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-6 py-3 text-sm font-medium text-white bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-colors mt-auto self-end relative z-10"
+            >
+              <span className="flex items-center -space-x-1.5">
+                <Image src="/images/browser-chrome.png" alt="Chrome" width={18} height={18} className="size-[18px] rounded-full ring-1 ring-bg-tertiary" />
+                <Image src="/images/browser-firefox.png" alt="Firefox" width={18} height={18} className="size-[18px] rounded-full ring-1 ring-bg-tertiary" />
+                <Image src="/images/browser-brave.png" alt="Brave" width={18} height={18} className="size-[18px] rounded-full ring-1 ring-bg-tertiary" />
+              </span>
+              Get extension
+            </a>
 
-            {/* Browser mockup placeholder */}
-            <div className="absolute bottom-0 right-4 sm:right-8 w-[260px] sm:w-[450px] md:w-[677px] h-[400px] sm:h-[500px] md:h-[717px] overflow-hidden rounded-[32px] bg-zinc-300/10 shadow-[0px_24px_24px_4px_rgba(0,0,0,0.25)] z-[1]">
-              <div className="absolute left-[160px] sm:left-[292px] top-[27px] w-[200px] sm:w-[360px] h-[320px] sm:h-[480px] rounded-[32px] bg-bg-elevated" />
+            {/* Browser extension screenshot — 360×600 aspect ratio */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 top-[72px] aspect-[360/600] h-full overflow-hidden rounded-[16px] shadow-[0px_24px_24px_4px_rgba(0,0,0,0.25)] z-[1]">
+              <Image src="/images/for-extension.png" alt="Freighter browser extension" fill className="object-cover object-top" />
             </div>
           </div>
         </motion.div>
